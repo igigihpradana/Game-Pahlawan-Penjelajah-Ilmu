@@ -14,7 +14,7 @@
         <h1>🏆 Pahlawan Penjelajah Ilmu 🏆</h1>
         <p class="subtitle">Masukkan nama kamu untuk memulai petualangan!</p>
         <div class="input-group">
-          <input type="text" id="player-name" placeholder="Nama kamu" class="input-field" autocomplete="off" />
+          <input type="text" id="player-name" placeholder="Nama kamu..." class="input-field" autocomplete="off" />
           <button id="start-btn" class="btn btn-primary">Mulai Petualangan</button>
         </div>
         <div class="leaderboard-section">
@@ -28,14 +28,14 @@
     <div id="quiz-screen" class="screen hidden">
       <div class="container">
         <div class="header">
-          <h2 id="level-title"></h2>
+          <h2 id="level-title">Materi: Kemerdekaan</h2>
           <div class="score-display">Skor: <span id="score">0</span></div>
         </div>
         <div class="progress-section">
-          <div id="progress-bar" class="progress-bar">
-            <div id="progress" class="progress-fill"></div>
+          <div id="progress-bar">
+            <div id="progress">0%</div>
           </div>
-          <p id="question-count"></p>
+          <p id="question-count">Soal 0 dari 0</p>
         </div>
         <div id="question-container" class="question-container">
           <p id="question" class="question-text"></p>
@@ -50,14 +50,50 @@
         <div class="result-card">
           <h2>🎉 Petualangan Selesai! 🎉</h2>
           <p id="final-message" class="final-message"></p>
+          
           <div class="result-details">
+            <p class="result-item">Nama Pemain: <span id="player-display" class="highlight">-</span></p>
             <p class="result-item">Total Skor: <span id="final-score" class="highlight">0</span></p>
             <p class="result-item">Badge: <span id="badge" class="badge-display">-</span></p>
             <p class="result-item">Tingkat Keberhasilan: <span id="success-rate" class="highlight">0%</span></p>
           </div>
-          <div class="button-group">
+
+          <!-- Bagian Tab Analisis & Refleksi -->
+          <div class="dashboard-section">
+            <div class="tabs-nav">
+              <button class="tab-btn active" onclick="switchTab('student-analysis')">📊 Analisis Hasil Siswa</button>
+              <button class="tab-btn" onclick="switchTab('teacher-reflection')">👩‍🏫 Refleksi & Diagnosis Guru</button>
+            </div>
+            
+            <!-- Konten Analisis Siswa -->
+            <div id="student-analysis" class="tab-content active">
+              <h3>Ulasan Detail Jawaban</h3>
+              <div id="review-list" class="review-list"></div>
+            </div>
+            
+            <!-- Konten Refleksi Guru -->
+            <div id="teacher-reflection" class="tab-content">
+              <h3>Diagnosis Capaian Kompetensi</h3>
+              <table class="report-table">
+                <thead>
+                  <tr>
+                    <th>Topik Materi</th>
+                    <th>Capaian</th>
+                    <th>Status Status</th>
+                  </tr>
+                </thead>
+                <tbody id="topic-matrix"></tbody>
+              </table>
+              <div class="teacher-notes">
+                <h4>💡 Rekomendasi Tindak Lanjut:</h4>
+                <p id="pedagogical-advice"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="button-group" style="margin-top: 25px;">
             <button id="restart-btn" class="btn btn-primary">🔄 Main Lagi</button>
-            <button id="view-leaderboard-btn" class="btn btn-secondary">📊 Lihat Leaderboard</button>
+            <button id="view-leaderboard-btn" class="btn btn-secondary">📊 Ke Halaman Utama</button>
           </div>
         </div>
       </div>
