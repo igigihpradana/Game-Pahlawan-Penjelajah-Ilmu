@@ -14,7 +14,7 @@ body {
 }
 
 #app {
-  max-width: 700px;
+  max-width: 750px;
   margin: 0 auto;
 }
 
@@ -23,32 +23,27 @@ body {
   border-radius: 20px;
   padding: 40px 30px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-  animation: slideIn 0.5s ease-out;
+  animation: slideIn 0.4s ease-out;
 }
 
 @keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Halaman awal */
 #start-screen h1 {
-  font-size: 2.5em;
+  font-size: 2.3em;
   color: #667eea;
   margin-bottom: 10px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  text-align: center;
 }
 
 .subtitle {
   font-size: 1.1em;
   color: #666;
   margin-bottom: 30px;
+  text-align: center;
 }
 
 .input-group {
@@ -73,15 +68,20 @@ body {
 
 /* Tombol */
 .btn {
-  padding: 12px 30px;
+  padding: 14px 30px;
   font-size: 1.1em;
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.2s;
   font-weight: bold;
   width: 100%;
   margin-bottom: 10px;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .btn-primary {
@@ -90,8 +90,8 @@ body {
   box-shadow: 0 5px 15px rgba(102,126,234,0.4);
 }
 
-.btn-primary:hover {
-  transform: translateY(-3px);
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(102,126,234,0.6);
 }
 
@@ -103,7 +103,7 @@ body {
 
 .btn-secondary:hover {
   background: #e67e22;
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
 /* Leaderboard */
@@ -117,6 +117,7 @@ body {
   color: #667eea;
   margin-bottom: 15px;
   font-size: 1.3em;
+  text-align: center;
 }
 
 .leaderboard-list {
@@ -132,20 +133,14 @@ body {
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
-  transition: transform 0.2s;
-}
-
-.leaderboard-list li:hover {
-  transform: translateX(5px);
 }
 
 .leaderboard-list li .rank {
   background: #667eea;
   color: white;
-  padding: 5px 10px;
-  border-radius: 50%;
   width: 30px;
   height: 30px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -153,7 +148,7 @@ body {
 }
 
 .leaderboard-list li .score {
-  color: #667eea;
+  color: #764ba2;
   font-size: 1.1em;
 }
 
@@ -162,28 +157,22 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   padding-bottom: 15px;
   border-bottom: 2px solid #667eea;
 }
 
 #level-title {
   color: #667eea;
-  font-size: 1.5em;
-  flex: 1;
+  font-size: 1.4em;
 }
 
 .score-display {
   background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
-  padding: 10px 20px;
+  padding: 8px 18px;
   border-radius: 10px;
   font-weight: bold;
-  font-size: 1.1em;
-}
-
-.progress-section {
-  margin-bottom: 30px;
 }
 
 #progress-bar {
@@ -192,14 +181,13 @@ body {
   overflow: hidden;
   height: 25px;
   margin-bottom: 10px;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
 }
 
 #progress {
   background: linear-gradient(90deg, #4caf50, #8bc34a);
   height: 100%;
-  width: 0;
-  transition: width 0.3s ease;
+  width: 0%;
+  transition: width 0.4s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -217,13 +205,13 @@ body {
 
 .question-container {
   background: #f9f9f9;
-  padding: 30px;
+  padding: 25px;
   border-radius: 15px;
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .question-text {
-  font-size: 1.3em;
+  font-size: 1.25em;
   color: #333;
   margin-bottom: 25px;
   font-weight: bold;
@@ -243,67 +231,138 @@ body {
   border: 2px solid #ddd;
   border-radius: 10px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.2s;
   font-weight: bold;
   color: #333;
+  text-align: left;
 }
 
-.options-grid button:hover {
+.options-grid button:hover:not(:disabled) {
   border-color: #667eea;
   background: #f0f4ff;
-  transform: translateX(5px);
+  transform: translateX(4px);
 }
 
-.options-grid button:active {
-  transform: scale(0.98);
+/* Modifikasi Kelas Dinamis Pilihan Jawaban */
+.options-grid button.correct {
+  background-color: #d4edda !important;
+  border-color: #28a745 !important;
+  color: #155724 !important;
 }
 
-/* Halaman hasil */
-.result-card {
-  text-align: center;
+.options-grid button.wrong {
+  background-color: #f8d7da !important;
+  border-color: #dc3545 !important;
+  color: #721c24 !important;
 }
 
-.result-card h2 {
-  font-size: 2em;
+/* Halaman Dashboard Diagnostik Evaluasi */
+.dashboard-section {
+  margin-top: 30px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: left;
+}
+
+.tabs-nav {
+  display: flex;
+  background: #f1f3f5;
+  border-bottom: 1px solid #ddd;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 12px;
+  background: none;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.2s;
+  font-size: 0.95em;
+}
+
+.tab-btn.active {
+  background: white;
   color: #667eea;
+  border-bottom: 3px solid #667eea;
+}
+
+.tab-content {
+  display: none;
+  padding: 20px;
+  background: white;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Review List Siswa */
+.review-item {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 10px;
+  border-left: 5px solid #ccc;
+}
+
+.review-item.correct-item { border-left-color: #28a745; }
+.review-item.wrong-item { border-left-color: #dc3545; }
+
+.review-q { font-weight: bold; margin-bottom: 5px; }
+.review-a { font-size: 0.95em; color: #555; }
+
+/* Table Refleksi Guru */
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
   margin-bottom: 15px;
 }
 
-.final-message {
-  font-size: 1.2em;
-  color: #666;
-  margin-bottom: 25px;
-  font-style: italic;
-  line-height: 1.6;
+.report-table th, .report-table td {
+  padding: 10px;
+  border: 1px solid #eee;
+  text-align: center;
+  font-size: 0.9em;
 }
 
+.report-table th { background: #f8f9fa; }
+
+.status-badge {
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.85em;
+  font-weight: bold;
+  color: white;
+}
+.status-mastered { background: #28a745; }
+.status-review { background: #ffc107; color: #333; }
+.status-remedial { background: #dc3545; }
+
+.teacher-notes {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  border-top: 3px solid #764ba2;
+}
+.teacher-notes h4 { color: #764ba2; margin-bottom: 5px; }
+.teacher-notes p { font-size: 0.95em; line-height: 1.5; color: #444; }
+
+/* Hasil Akhir Utama */
+.result-card text-align: center;
 .result-details {
   background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-  padding: 25px;
+  padding: 20px;
   border-radius: 15px;
-  margin-bottom: 30px;
+  margin: 20px 0;
+  text-align: left;
 }
-
-.result-item {
-  font-size: 1.1em;
-  margin-bottom: 12px;
-  color: #333;
-}
-
-.highlight {
-  color: #667eea;
-  font-weight: bold;
-  font-size: 1.2em;
-}
-
-.badge-display {
-  background: #f39c12;
-  color: white;
-  padding: 5px 15px;
-  border-radius: 20px;
-  font-weight: bold;
-  display: inline-block;
-}
+.result-item { font-size: 1.1em; margin-bottom: 8px; }
+.highlight { color: #764ba2; font-weight: bold; }
+.badge-display { background: #f39c12; color: white; padding: 3px 12px; border-radius: 20px; font-weight: bold; }
 
 .button-group {
   display: grid;
@@ -311,63 +370,14 @@ body {
   gap: 15px;
 }
 
+/* Visibilitas Screen */
+.screen { display: none; }
+.screen.active { display: block; }
+.hidden { display: none !important; }
+
 /* Responsif */
 @media (max-width: 600px) {
-  .container {
-    padding: 25px 20px;
-  }
-
-  #start-screen h1 {
-    font-size: 2em;
-  }
-
-  .header {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  #level-title {
-    width: 100%;
-    text-align: center;
-  }
-
-  .score-display {
-    width: 100%;
-    text-align: center;
-  }
-
-  .button-group {
-    grid-template-columns: 1fr;
-  }
-
-  .options-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Animasi */
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-.btn:active {
-  animation: pulse 0.3s;
-}
-
-/* Screen visibility */
-.screen {
-  display: none;
-}
-
-.screen.active {
-  display: block;
-}
-
-.hidden {
-  display: none !important;
+  .container { padding: 20px 15px; }
+  .button-group { grid-template-columns: 1fr; }
+  .header { flex-direction: column; gap: 10px; text-align: center; }
 }
