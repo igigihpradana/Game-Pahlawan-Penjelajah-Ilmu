@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pahlawan Penjelajah Ilmu</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Halaman Awal -->
+    <div id="start-screen" class="screen active">
+      <div class="container">
+        <h1>🏆 Pahlawan Penjelajah Ilmu 🏆</h1>
+        <p class="subtitle">Masukkan nama kamu untuk memulai petualangan!</p>
+        <div class="input-group">
+          <input type="text" id="player-name" placeholder="Nama kamu" class="input-field" autocomplete="off" />
+          <button id="start-btn" class="btn btn-primary">Mulai Petualangan</button>
+        </div>
+        <div class="leaderboard-section">
+          <h3>🌟 Skor Tertinggi 🌟</h3>
+          <ul id="leaderboard" class="leaderboard-list"></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Halaman Kuis -->
+    <div id="quiz-screen" class="screen hidden">
+      <div class="container">
+        <div class="header">
+          <h2 id="level-title"></h2>
+          <div class="score-display">Skor: <span id="score">0</span></div>
+        </div>
+        <div class="progress-section">
+          <div id="progress-bar" class="progress-bar">
+            <div id="progress" class="progress-fill"></div>
+          </div>
+          <p id="question-count"></p>
+        </div>
+        <div id="question-container" class="question-container">
+          <p id="question" class="question-text"></p>
+          <div id="options" class="options-grid"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Halaman Hasil -->
+    <div id="result-screen" class="screen hidden">
+      <div class="container">
+        <div class="result-card">
+          <h2>🎉 Petualangan Selesai! 🎉</h2>
+          <p id="final-message" class="final-message"></p>
+          <div class="result-details">
+            <p class="result-item">Total Skor: <span id="final-score" class="highlight">0</span></p>
+            <p class="result-item">Badge: <span id="badge" class="badge-display">-</span></p>
+            <p class="result-item">Tingkat Keberhasilan: <span id="success-rate" class="highlight">0%</span></p>
+          </div>
+          <div class="button-group">
+            <button id="restart-btn" class="btn btn-primary">🔄 Main Lagi</button>
+            <button id="view-leaderboard-btn" class="btn btn-secondary">📊 Lihat Leaderboard</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
